@@ -28,8 +28,8 @@ variable "cluster_name" {
 }
 
 variable "node_count" {
-  type = "integer"
-  default = 4
+  type = "string"
+  default = "4"
 }
 
 provider "google" {
