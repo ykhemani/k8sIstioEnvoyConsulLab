@@ -27,6 +27,10 @@ variable "cluster_name" {
   type = "string"
 }
 
+variable "node_count" {
+  type = "integer"
+  default = 4
+}
 
 provider "google" {
   # OSS, so use this
@@ -42,7 +46,7 @@ resource "google_container_cluster" "k8s" {
   name               = "${var.cluster_name}"
   zone               = "${var.zone}"
   # we need 4 of these for the demo
-  initial_node_count = 4
+  initial_node_count =  "${var.node_count}"
 
   # this is going to be your project
   project = "${var.project}"
