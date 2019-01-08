@@ -3,31 +3,52 @@ variable "masterAuthPass" {
   type = "string"
 }
 
+variable "masterAuthUser" {
+  type = "string"
+}
+
 variable "serviceAccount" {
   type = "string"
 }
 
+variable "project" {
+  type = "string"
+}
+
+variable "region" {
+  type = "string"
+}
+
+variable "zone" {
+  type = "string"
+}
+
+variable "cluster_name" {
+  type = "string"
+}
+
+
 provider "google" {
   # OSS, so use this
-  # credentials = "${file("/some/path/to/your/auth.json")}"
+  #credentials = "${file("/some/path/to/your/auth.json")}"
   credentials = "${var.serviceAccount}"
   # change this name to your project
-  project = "jjordan-test"
-  region  = "us-east4"
-  zone    = "us-east4-a"
+  project = "${var.project}"
+  region  = "${var.region}"
+  zone    = "${var.zone}"
 }
 
 resource "google_container_cluster" "k8s" {
-  name               = "k8s"
-  zone               = "us-east4-a"
+  name               = "${var.cluster_name}"
+  zone               = "${var.zone}"
   # we need 4 of these for the demo
   initial_node_count = 4
 
   # this is going to be your project
-  project = "jjordan-test"
+  project = "${var.project}"
 
   master_auth {
-    username = "john"
+    username = "${var.masterAuthUser}"
     password = "${var.masterAuthPass}"
   }
 
