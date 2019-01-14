@@ -35,7 +35,7 @@ variable "node_count" {
 provider "google" {
   # OSS, so use this
   #credentials = "${file("/some/path/to/your/auth.json")}"
-  credentials = "${var.serviceAccount}"
+  #credentials = "${var.serviceAccount}"
   # change this name to your project
   project = "${var.project}"
   region  = "${var.region}"
