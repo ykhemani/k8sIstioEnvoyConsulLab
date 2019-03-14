@@ -37,6 +37,11 @@ If you're an SE, then you already have access to GCP. If you are a partner, then
 - Navigate to K8s Engine in GCP Console
 - Enable the K8s API
 
+- Alternatively, enable the K8s API via gcloud
+```$ gcloud config set project <your project name>
+$ gcloud services enable container.googleapis.com
+```
+
 ### create service account
 - Navigate to the IAM section
 - Navigate to [Service Accounts](https://console.cloud.google.com/projectselector/iam-admin/serviceaccounts?supportedpurview=project&project=&folder=&organizationId=)
